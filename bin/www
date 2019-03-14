@@ -1,0 +1,15 @@
+#!/usr/bin/env node
+require('@babel/register')({
+    presets: ['@babel/preset-env'],
+    ignore: ["**/node_modules/(?!avatio-avatar)"],
+    compact: false,
+});
+require('@babel/polyfill');
+
+var app = require("../src/index");
+
+app.set("port", process.env.PORT || 3006);
+
+var server = app.listen(app.get("port"), function() {
+    console.log("Express server listening on port " + server.address().port);
+});
