@@ -5,6 +5,7 @@ import * as Renderer from 'vue-server-renderer';
 import { convert } from 'convert-svg-to-png';
 import _ from 'lodash';
 import crypto from 'crypto';
+import predefined from '../predefined';
 
 const app = express();
 const renderer = Renderer.createRenderer();
@@ -13,6 +14,11 @@ const hash = crypto.createHash('sha256');
 
 function randomFromText(sex, text) {
     const map = [];
+    if (predefined[sex][text.split('@')[0]]) {
+        console.log(predefined[sex][text.split('@')[0]]);
+        return predefined[sex][text.split('@')[0]];
+    }
+
     text = crypto.createHash('sha256').update(text).digest('hex');
 
     Config[sex].variants.forEach((variant) => {
