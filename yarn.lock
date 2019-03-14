@@ -786,10 +786,10 @@ atob@^2.1.1:
   resolved "https://registry.yarnpkg.com/atob/-/atob-2.1.2.tgz#6d9517eb9e030d2436666651e86bd9f6f13533c9"
   integrity sha512-Wm6ukoaOGJi/73p/cl2GvLjTI5JM1k/O14isD73YML8StrH/7/lRFgmg8nICZgD3bZZvjwCGxtMOD3wWNAu8cg==
 
-avatio-avatar@^1.0.1:
-  version "1.0.2"
-  resolved "https://registry.yarnpkg.com/avatio-avatar/-/avatio-avatar-1.0.2.tgz#eaa198328d73bfb326349417cc30a5418e2b1e23"
-  integrity sha512-zaWPknxSEqOFY4tz78bCMiA1+qW+oOjBW57IIKJ38hOT8/VNyTgyEj+G4WQslk5n4y0CSVeARW+OkbzkvsK1Ig==
+avatio-avatar@^1.0.2:
+  version "1.0.4"
+  resolved "https://registry.yarnpkg.com/avatio-avatar/-/avatio-avatar-1.0.4.tgz#0055990102584b7738b114738ae3ec3863bf7118"
+  integrity sha512-kLEL1p1w9nk+eMMnOtvt7K7SkiA/dUucQXFkmgMuJoIVcgb8rUN9h8cfFc/szNhAse5oBCl+B3cMKwjdYOqfag==
   dependencies:
     "@babel/core" "^7.3.4"
     "@babel/preset-env" "^7.3.4"
