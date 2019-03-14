@@ -1,8 +1,7 @@
 #!/usr/bin/env node
 require('@babel/register')({
     presets: ['@babel/preset-env'],
-    ignore: ["**/node_modules/(?!avatio-avatar)"],
-    compact: false,
+    ignore: [__dirname + "/../node_modules/"],
 });
 require('@babel/polyfill');
 
