@@ -20,6 +20,7 @@ function randomFromText(sex, text) {
     }
 
     text = crypto.createHash('sha256').update(text).digest('hex');
+    console.log(text);
 
     Config[sex].variants.forEach((variant) => {
         const values = variant.values.filter((item) => item.randomizer !== false);
@@ -45,7 +46,6 @@ function randomFromText(sex, text) {
             modulos[i] += numbers[i % numbers.length];
         }
     }
-
     const result = {};
     map.forEach((item, i) => {
         if (!result[item.component]) {
@@ -53,6 +53,8 @@ function randomFromText(sex, text) {
         }
         result[item.component][item.prop] = item.values[modulos[i] % item.values.length].value;
     });
+
+    console.log(result);
 
     return result;
 }
@@ -85,14 +87,22 @@ function vueAppFactory(sex, options = {}, text = null) {
 }
 
 app.get('/avatar.svg', (req, res) => {
-    const vueApp = vueAppFactory(req.query.sex || 'Female', req.query.options, req.query.text);
+    let options = req.query.options;
+    if (req.query.baseoptions) {
+        options = JSON.parse(new Buffer(req.query.baseoptions, 'base64').toString());
+    }
+    const vueApp = vueAppFactory(req.query.sex || 'Female', options, req.query.text);
     renderer.renderToString(vueApp, (err, svg) => {
         res.set('Content-Type', 'image/svg+xml').end(svg);
     });
 });
 
 app.get('/avatar.png', (req, res) => {
-    const vueApp = vueAppFactory(req.query.sex || 'Female', req.query.options, req.query.text);
+    let options = req.query.options;
+    if (req.query.baseoptions) {
+        options = JSON.parse(new Buffer(req.query.baseoptions, 'base64').toString());
+    }
+    const vueApp = vueAppFactory(req.query.sex || 'Female', options, req.query.text);
     renderer.renderToString(vueApp, (err, svg) => {
         const png = convert(svg, {
             width: parseInt(req.query.width || 500, 10),
